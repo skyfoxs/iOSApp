@@ -1,0 +1,29 @@
+//
+//  Todo.swift
+//  TodoApp
+//
+//  Created by Supakit Thanadittagorn on 7/7/18.
+//  Copyright © 2018 pop. All rights reserved.
+//
+
+import Foundation
+
+class Todo {
+    private var items = [TodoItem]()
+
+    var totalItems: Int {
+        return items.count
+    }
+
+    func item(at index: Int) -> TodoItem {
+        return items[index]
+    }
+
+    func add(item: TodoItem) {
+        items.insert(item, at: 0)
+    }
+
+    func remove(at index: Int) {
+        items.remove(at: index)
+    }
+}
