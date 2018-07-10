@@ -26,4 +26,8 @@ class Todo {
     func remove(at index: Int) {
         items.remove(at: index)
     }
+
+    func index(of item: TodoItem) -> Int? {
+        return items.index { $0 === item }
+    }
 }

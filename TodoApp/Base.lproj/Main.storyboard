@@ -64,6 +64,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="mcB-kL-6DD" id="fw6-vp-4a7"/>
+                        <segue destination="wwq-08-Kvs" kind="presentation" identifier="openEditItemSegue" id="yIk-Lq-I5p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -170,4 +171,7 @@
             <point key="canvasLocation" x="1454" y="2"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="yIk-Lq-I5p"/>
+    </inferredMetricsTieBreakers>
 </document>
