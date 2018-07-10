@@ -64,7 +64,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="mcB-kL-6DD" id="fw6-vp-4a7"/>
-                        <segue destination="pbn-cc-K8a" kind="show" identifier="openDetailViewSegue" id="vr7-Q0-50K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -169,24 +168,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2AJ-Cf-BLw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1454" y="2"/>
-        </scene>
-        <!--Detail-->
-        <scene sceneID="Ceq-as-DVq">
-            <objects>
-                <viewController id="pbn-cc-K8a" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="p5A-J2-y6A">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="xIY-cd-Hvx"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Detail" id="vSx-Zf-3he">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="mkQ-zl-T1C"/>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="isY-Gx-OuV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1445" y="742"/>
         </scene>
     </scenes>
 </document>
