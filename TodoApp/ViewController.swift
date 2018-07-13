@@ -46,7 +46,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     func addNewItemViewController(controller: AddNewItemViewController, didAdd item: TodoItem) {
         todo.add(item: item)
-        tableView?.reloadData()
+        if let index = todo.index(of: item) {
+            tableView?.insertRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+        }
         controller.dismiss(animated: true, completion: nil)
     }
 
