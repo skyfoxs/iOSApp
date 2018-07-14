@@ -13,6 +13,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var tableView: UITableView?
     var todo = Todo()
 
+    //MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todo.totalItems
     }
@@ -24,6 +25,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
 
+    //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "openEditItemSegue", sender: todo.item(at: indexPath.row))
@@ -37,6 +39,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
 
+    //MARK: - Initial Page
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBarLargeTitle()
@@ -52,6 +55,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         navigationController?.navigationBar.prefersLargeTitles = true
     }
 
+    //MARK: - ItemDetailViewControllerDelegate
     func itemDetailViewController(controller: ItemDetailViewController, didAdd item: TodoItem) {
         todo.add(item: item)
         if let index = todo.index(of: item) {
@@ -77,6 +81,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
 
+    //MARK: - TodoItemTableViewCellDelegate
     func todoItemTableViewCellDidTapCheckboxButton(cell: TodoItemTableViewCell) {
         if let indexPath = tableView?.indexPath(for: cell) {
             todo.item(at: indexPath.row).toggleIsDone()
@@ -85,6 +90,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         saveTodo()
     }
 
+    //MARK: - Load/Save File
     func loadTodo() {
         do {
             let fileManager = FileManager.default
@@ -121,6 +127,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         return destinationURL
     }
 
+    //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openAddItemSegue" {
             if let nav = segue.destination as? UINavigationController,

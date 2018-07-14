@@ -23,6 +23,10 @@ class ItemDetailViewController: UIViewController {
         return todoItem != nil
     }
 
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var isDoneSwitch: UISwitch!
+
+    //MARK: - Initial Page
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,9 +44,7 @@ class ItemDetailViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
     }
 
-    @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var isDoneSwitch: UISwitch!
-
+    //MARK: - Action
     @IBAction func doneButtonDidTap(_ sender: UIBarButtonItem) {
         guard let title = titleTextField.text, !title.isEmpty else {
             return
@@ -61,10 +63,3 @@ class ItemDetailViewController: UIViewController {
         delegate?.itemDetailViewControllerDidCancel(controller: self)
     }
 }
-
-
-
-
-
-
-
