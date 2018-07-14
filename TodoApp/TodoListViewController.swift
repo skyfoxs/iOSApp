@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TodoListViewController.swift
 //  TodoApp
 //
 //  Created by Supakit Thanadittagorn on 6/7/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddNewItemViewControllerDelegate, TodoItemTableViewCellDelegate {
+class TodoListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ItemDetailViewControllerDelegate, TodoItemTableViewCellDelegate {
 
     @IBOutlet weak var tableView: UITableView?
     var todo = Todo()
@@ -43,7 +43,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         todo.add(item: TodoItem(title: "Learning Swift"))
     }
 
-    func addNewItemViewController(controller: AddNewItemViewController, didAdd item: TodoItem) {
+    func itemDetailViewController(controller: ItemDetailViewController, didAdd item: TodoItem) {
         todo.add(item: item)
         if let index = todo.index(of: item) {
             tableView?.insertRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
@@ -51,14 +51,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         controller.dismiss(animated: true, completion: nil)
     }
 
-    func addNewItemViewController(controller: AddNewItemViewController, didEdit item: TodoItem) {
+    func itemDetailViewController(controller: ItemDetailViewController, didEdit item: TodoItem) {
         if let index = todo.index(of: item) {
             tableView?.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
         }
         controller.dismiss(animated: true, completion: nil)
     }
 
-    func addNewItemViewControllerDidCancel(controller: AddNewItemViewController) {
+    func itemDetailViewControllerDidCancel(controller: ItemDetailViewController) {
         controller.dismiss(animated: true, completion: nil)
     }
 
@@ -72,12 +72,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openAddItemSegue" {
             if let nav = segue.destination as? UINavigationController,
-                let controller = nav.topViewController as? AddNewItemViewController {
+                let controller = nav.topViewController as? ItemDetailViewController {
                 controller.delegate = self
             }
         } else if segue.identifier == "openEditItemSegue" {
             if let nav = segue.destination as? UINavigationController,
-                let controller = nav.topViewController as? AddNewItemViewController {
+                let controller = nav.topViewController as? ItemDetailViewController {
                 controller.todoItem = sender as? TodoItem
                 controller.delegate = self
             }

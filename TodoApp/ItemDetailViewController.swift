@@ -1,5 +1,5 @@
 //
-//  AddNewItemViewController.swift
+//  ItemDetailViewController.swift
 //  TodoApp
 //
 //  Created by Supakit Thanadittagorn on 8/7/18.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-protocol AddNewItemViewControllerDelegate: class {
-    func addNewItemViewController(controller: AddNewItemViewController, didAdd item: TodoItem)
-    func addNewItemViewController(controller: AddNewItemViewController, didEdit item: TodoItem)
-    func addNewItemViewControllerDidCancel(controller: AddNewItemViewController)
+protocol ItemDetailViewControllerDelegate: class {
+    func itemDetailViewController(controller: ItemDetailViewController, didAdd item: TodoItem)
+    func itemDetailViewController(controller: ItemDetailViewController, didEdit item: TodoItem)
+    func itemDetailViewControllerDidCancel(controller: ItemDetailViewController)
 }
 
-class AddNewItemViewController: UIViewController {
+class ItemDetailViewController: UIViewController {
 
-    weak var delegate: AddNewItemViewControllerDelegate?
+    weak var delegate: ItemDetailViewControllerDelegate?
     var todoItem: TodoItem?
 
     override func viewDidLoad() {
@@ -41,15 +41,15 @@ class AddNewItemViewController: UIViewController {
         if let todoItem = todoItem {
             todoItem.title = title
             todoItem.isDone = isDoneSwitch.isOn
-            delegate?.addNewItemViewController(controller: self, didEdit: todoItem)
+            delegate?.itemDetailViewController(controller: self, didEdit: todoItem)
         } else {
             let todoItem = TodoItem(title: title, isDone: isDoneSwitch.isOn)
-            delegate?.addNewItemViewController(controller: self, didAdd: todoItem)
+            delegate?.itemDetailViewController(controller: self, didAdd: todoItem)
         }
     }
 
     @IBAction func cancelButtonDidTap(_ sender: UIBarButtonItem) {
-        delegate?.addNewItemViewControllerDidCancel(controller: self)
+        delegate?.itemDetailViewControllerDidCancel(controller: self)
     }
 }
 
