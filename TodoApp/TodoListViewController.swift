@@ -39,12 +39,17 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBarLargeTitle()
         loadTodo()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //navigationController?.navigationBar.prefersLargeTitles = true
+        setNavigationBarLargeTitle()
+    }
+
+    func setNavigationBarLargeTitle() {
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     func itemDetailViewController(controller: ItemDetailViewController, didAdd item: TodoItem) {

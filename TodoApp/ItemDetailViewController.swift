@@ -37,7 +37,7 @@ class ItemDetailViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
 
     @IBOutlet weak var titleTextField: UITextField!
