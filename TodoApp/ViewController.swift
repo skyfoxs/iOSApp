@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddNewItemViewControllerDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddNewItemViewControllerDelegate, TodoItemTableViewCellDelegate {
 
     @IBOutlet weak var tableView: UITableView?
     var todo = Todo()
@@ -20,7 +20,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoItemCell", for: indexPath) as! TodoItemTableViewCell
         let item = todo.item(at: indexPath.row)
-        cell.configure(item: item)
+        cell.configure(item: item, delegate: self)
         return cell
     }
 
@@ -60,6 +60,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     func addNewItemViewControllerDidCancel(controller: AddNewItemViewController) {
         controller.dismiss(animated: true, completion: nil)
+    }
+
+    func todoItemTableViewCellDidTapCheckboxButton(cell: TodoItemTableViewCell) {
+        if let indexPath = tableView?.indexPath(for: cell) {
+            todo.item(at: indexPath.row).toggleIsDone()
+            tableView?.reloadRows(at: [indexPath], with: .automatic)
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
