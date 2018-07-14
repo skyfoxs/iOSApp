@@ -55,11 +55,15 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         if let index = todo.index(of: item) {
             tableView?.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
         }
-        controller.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
 
     func itemDetailViewControllerDidCancel(controller: ItemDetailViewController) {
-        controller.dismiss(animated: true, completion: nil)
+        if controller.isInEditMode {
+            navigationController?.popViewController(animated: true)
+        } else {
+            controller.dismiss(animated: true, completion: nil)
+        }
     }
 
     func todoItemTableViewCellDidTapCheckboxButton(cell: TodoItemTableViewCell) {
@@ -76,8 +80,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
                 controller.delegate = self
             }
         } else if segue.identifier == "openEditItemSegue" {
-            if let nav = segue.destination as? UINavigationController,
-                let controller = nav.topViewController as? ItemDetailViewController {
+            if let controller = segue.destination as? ItemDetailViewController {
                 controller.todoItem = sender as? TodoItem
                 controller.delegate = self
             }

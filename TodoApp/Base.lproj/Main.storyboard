@@ -90,7 +90,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="mcB-kL-6DD" id="fw6-vp-4a7"/>
-                        <segue destination="wwq-08-Kvs" kind="presentation" identifier="openEditItemSegue" id="yIk-Lq-I5p"/>
+                        <segue destination="V50-cU-9Z5" kind="show" identifier="openEditItemSegue" id="DSZ-zv-dlc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -194,13 +194,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2AJ-Cf-BLw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1454" y="2"/>
+            <point key="canvasLocation" x="1454" y="358"/>
         </scene>
     </scenes>
     <resources>
         <image name="check" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yIk-Lq-I5p"/>
+        <segue reference="DSZ-zv-dlc"/>
     </inferredMetricsTieBreakers>
 </document>
