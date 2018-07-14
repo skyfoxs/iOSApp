@@ -33,14 +33,18 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         if editingStyle == .delete {
             todo.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            saveTodo()
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        todo.add(item: TodoItem(title: "Download XCode", isDone: true))
-        todo.add(item: TodoItem(title: "Buy milk"))
-        todo.add(item: TodoItem(title: "Learning Swift"))
+        loadTodo()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     func itemDetailViewController(controller: ItemDetailViewController, didAdd item: TodoItem) {
@@ -49,6 +53,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
             tableView?.insertRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
         }
         controller.dismiss(animated: true, completion: nil)
+        saveTodo()
     }
 
     func itemDetailViewController(controller: ItemDetailViewController, didEdit item: TodoItem) {
@@ -56,6 +61,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
             tableView?.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
         }
         navigationController?.popViewController(animated: true)
+        saveTodo()
     }
 
     func itemDetailViewControllerDidCancel(controller: ItemDetailViewController) {
@@ -71,6 +77,43 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
             todo.item(at: indexPath.row).toggleIsDone()
             tableView?.reloadRows(at: [indexPath], with: .automatic)
         }
+        saveTodo()
+    }
+
+    func loadTodo() {
+        do {
+            let fileManager = FileManager.default
+            let destinationURL = try makeTodoFileURL(fileManager: fileManager)
+
+            if fileManager.fileExists(atPath: destinationURL.path) {
+                let data = try Data(contentsOf: destinationURL)
+                let decoder = PropertyListDecoder()
+                todo = try decoder.decode(Todo.self, from: data)
+                tableView?.reloadData()
+            }
+        } catch {
+            print("Cannot load todo from file, Error: \(error)")
+        }
+    }
+
+    func saveTodo() {
+        do {
+            let destinationURL = try makeTodoFileURL(fileManager: FileManager.default)
+
+            let encoder = PropertyListEncoder()
+            let data = try encoder.encode(todo)
+            
+            try data.write(to: destinationURL)
+        } catch {
+            print("Cannot save todo to file, Error: \(error)")
+        }
+    }
+
+    func makeTodoFileURL(fileManager: FileManager) throws -> URL {
+        var destinationURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+        destinationURL.appendPathComponent("todo")
+        destinationURL.appendPathExtension("plist")
+        return destinationURL
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

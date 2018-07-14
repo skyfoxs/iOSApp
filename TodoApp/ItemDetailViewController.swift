@@ -35,6 +35,11 @@ class ItemDetailViewController: UIViewController {
         }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //navigationController?.navigationBar.prefersLargeTitles = false
+    }
+
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var isDoneSwitch: UISwitch!
 
