@@ -67,10 +67,7 @@
 				D85D239320F24A4E001F3CED /* ItemDetailViewController.swift */,
 				D8B5DB0320F9DC1400DF1EEF /* Model */,
 				D8B5DB0420F9DC2700DF1EEF /* View */,
-				D85D237D20EFC190001F3CED /* AppDelegate.swift */,
-				D85D238620EFC191001F3CED /* LaunchScreen.storyboard */,
-				D85D238420EFC191001F3CED /* Assets.xcassets */,
-				D85D238920EFC191001F3CED /* Info.plist */,
+				D8B5DB0520F9DCA600DF1EEF /* Supporting Files */,
 			);
 			path = TodoApp;
 			sourceTree = "<group>";
@@ -90,6 +87,17 @@
 				D8B5DAFC20F9A03400DF1EEF /* TodoItemTableViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		D8B5DB0520F9DCA600DF1EEF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D85D237D20EFC190001F3CED /* AppDelegate.swift */,
+				D85D238620EFC191001F3CED /* LaunchScreen.storyboard */,
+				D85D238420EFC191001F3CED /* Assets.xcassets */,
+				D85D238920EFC191001F3CED /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,7 +322,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 934E82A6FW;
-				INFOPLIST_FILE = TodoApp/Info.plist;
+				INFOPLIST_FILE = "TodoApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -332,7 +340,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 934E82A6FW;
-				INFOPLIST_FILE = TodoApp/Info.plist;
+				INFOPLIST_FILE = "TodoApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
