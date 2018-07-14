@@ -8,10 +8,20 @@
 
 import UIKit
 
-class TodoListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ItemDetailViewControllerDelegate, TodoItemTableViewCellDelegate {
+class TodoListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ItemDetailViewControllerDelegate, TodoItemTableViewCellDelegate, UITableViewDragDelegate, UITableViewDropDelegate {
 
     @IBOutlet weak var tableView: UITableView?
     var todo = Todo()
+
+    //MARK: - Initial Page
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loadTodo()
+        tableView?.dragDelegate = self
+        tableView?.dragInteractionEnabled = true
+
+        tableView?.dropDelegate = self
+    }
 
     //MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -23,6 +33,15 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         let item = todo.item(at: indexPath.row)
         cell.configure(item: item, delegate: self)
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        todo.move(from: sourceIndexPath.row, to: destinationIndexPath.row)
+        saveTodo()
     }
 
     //MARK: - UITableViewDelegate
@@ -39,10 +58,20 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
 
-    //MARK: - Initial Page
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        loadTodo()
+    //MARK: - UITableViewDragDelegate
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        return [UIDragItem(itemProvider: NSItemProvider())]
+    }
+
+    //MARK: - UITableViewDropDelegate
+    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {}
+
+    func tableView(_ tableView: UITableView, canHandle session: UIDropSession) -> Bool {
+        return session.localDragSession != nil
+    }
+
+    func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
+        return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
     }
 
     //MARK: - ItemDetailViewControllerDelegate
@@ -132,13 +161,3 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
