@@ -39,11 +39,6 @@ class ItemDetailViewController: UIViewController {
         }
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = false
-    }
-
     //MARK: - Action
     @IBAction func doneButtonDidTap(_ sender: UIBarButtonItem) {
         guard let title = titleTextField.text, !title.isEmpty else {
