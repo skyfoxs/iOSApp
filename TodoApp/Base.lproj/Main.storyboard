@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,22 +23,44 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="todoItemCell" textLabel="TlS-9a-gix" style="IBUITableViewCellStyleDefault" id="g7n-n4-Em1">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="todoItemCell" rowHeight="52" id="g7n-n4-Em1" customClass="TodoItemTableViewCell" customModule="TodoApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g7n-n4-Em1" id="MnR-Cs-oP6">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TlS-9a-gix">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Xff-6P-I1s">
+                                                    <rect key="frame" x="15" y="8" width="322" height="35.5"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GjH-NW-ubA">
+                                                            <rect key="frame" x="0.0" y="0.0" width="35.5" height="35.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="35" id="SNK-ng-KAF"/>
+                                                                <constraint firstAttribute="width" secondItem="GjH-NW-ubA" secondAttribute="height" multiplier="1:1" id="j1K-j8-u3o"/>
+                                                            </constraints>
+                                                            <state key="normal" image="check"/>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1zO-4B-2N7">
+                                                            <rect key="frame" x="39.5" y="7.5" width="282.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Xff-6P-I1s" firstAttribute="leading" secondItem="MnR-Cs-oP6" secondAttribute="leading" constant="15" id="3Fa-zj-Bi4"/>
+                                                <constraint firstItem="Xff-6P-I1s" firstAttribute="top" secondItem="MnR-Cs-oP6" secondAttribute="top" constant="8" id="6pu-du-5gI"/>
+                                                <constraint firstAttribute="bottom" secondItem="Xff-6P-I1s" secondAttribute="bottom" constant="8" id="Ikp-UE-m9x"/>
+                                                <constraint firstAttribute="trailing" secondItem="Xff-6P-I1s" secondAttribute="trailing" constant="5" id="xtD-gU-2VQ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="checkboxButton" destination="GjH-NW-ubA" id="TqR-8T-aby"/>
+                                            <outlet property="titleLabel" destination="1zO-4B-2N7" id="gps-eo-TCD"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -69,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="548" y="3"/>
+            <point key="canvasLocation" x="548" y="2.2488755622188905"/>
         </scene>
         <!--Add new item-->
         <scene sceneID="LHa-kv-NQg">
@@ -171,6 +194,9 @@
             <point key="canvasLocation" x="1454" y="2"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="check" width="36" height="36"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="yIk-Lq-I5p"/>
     </inferredMetricsTieBreakers>

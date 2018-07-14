@@ -15,6 +15,7 @@
 		D85D239020F0A375001F3CED /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85D238F20F0A375001F3CED /* Todo.swift */; };
 		D85D239220F0F429001F3CED /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85D239120F0F429001F3CED /* TodoItem.swift */; };
 		D85D239420F24A4E001F3CED /* AddNewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85D239320F24A4E001F3CED /* AddNewItemViewController.swift */; };
+		D8B5DAFD20F9A03400DF1EEF /* TodoItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B5DAFC20F9A03400DF1EEF /* TodoItemTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		D85D238F20F0A375001F3CED /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		D85D239120F0F429001F3CED /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		D85D239320F24A4E001F3CED /* AddNewItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewItemViewController.swift; sourceTree = "<group>"; };
+		D8B5DAFC20F9A03400DF1EEF /* TodoItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				D85D238F20F0A375001F3CED /* Todo.swift */,
 				D85D239120F0F429001F3CED /* TodoItem.swift */,
 				D85D239320F24A4E001F3CED /* AddNewItemViewController.swift */,
+				D8B5DAFC20F9A03400DF1EEF /* TodoItemTableViewCell.swift */,
 			);
 			path = TodoApp;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			files = (
 				D85D238020EFC190001F3CED /* ViewController.swift in Sources */,
 				D85D239020F0A375001F3CED /* Todo.swift in Sources */,
+				D8B5DAFD20F9A03400DF1EEF /* TodoItemTableViewCell.swift in Sources */,
 				D85D239220F0F429001F3CED /* TodoItem.swift in Sources */,
 				D85D239420F24A4E001F3CED /* AddNewItemViewController.swift in Sources */,
 				D85D237E20EFC190001F3CED /* AppDelegate.swift in Sources */,
