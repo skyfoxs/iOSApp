@@ -39,6 +39,11 @@ class ItemDetailViewController: UIViewController {
         }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        titleTextField.becomeFirstResponder()
+    }
+
     //MARK: - Action
     @IBAction func doneButtonDidTap(_ sender: UIBarButtonItem) {
         guard let title = titleTextField.text, !title.isEmpty else {

@@ -44,18 +44,18 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         saveTodo()
     }
 
-    //MARK: - UITableViewDelegate
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "openEditItemSegue", sender: todo.item(at: indexPath.row))
-    }
-
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             todo.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             saveTodo()
         }
+    }
+
+    //MARK: - UITableViewDelegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "openEditItemSegue", sender: todo.item(at: indexPath.row))
     }
 
     //MARK: - UITableViewDragDelegate
